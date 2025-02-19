@@ -122,6 +122,7 @@ c017fffffffe|	plan9	XORW $-2, R1
     b93a0008|	plan9	KDSA R0, R8
     b9296024|	plan9	KMA R2, R6, R4
     b92d6024|	plan9	KMCTR R2, R6, R4
+    b31e0042|   plan9   FMADD F4, F2, F0
 e743400000f3|	plan9	VAB V3, V4
 e743600000f3|	plan9	VAB V3, V6, V4
 e743400010f3|	plan9	VAH V3, V4

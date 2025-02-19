@@ -142,7 +142,7 @@ func GoSyntax(inst Inst, pc uint64, symname func(uint64) (string, uint64)) strin
 		case LRVH:
 			op = "MOVHBR"
 		}
-	case LA, LAY:
+	case LA, LAY, LARL:
 		args[0], args[1] = args[1], args[0]
 		op = "MOVD"
 
@@ -349,6 +349,9 @@ func GoSyntax(inst Inst, pc uint64, symname func(uint64) (string, uint64)) strin
 	case SLBGR:
 		op = "SUBE"
 		args[0], args[1] = args[1], args[0]
+	case MADBR:
+		op = "FMADD"
+		args[0], args[1], args[2] = args[1], args[2], args[0]
 	case MSGFR, MHI, MSFI, MSGFI:
 		switch inst.Op {
 		case MSGFR, MHI, MSFI:
@@ -1260,7 +1263,7 @@ func reverseOperandOrder(op Op) bool {
 	switch op {
 	case LOCR, MLGR:
 		return true
-	case LTEBR, LTDBR:
+	case LTEBR, LTDBR, LCDBR, LGDR:
 		return true
 	case VLEIB, VLEIH, VLEIF, VLEIG, VPDI:
 		return true
