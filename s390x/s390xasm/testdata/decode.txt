@@ -14,6 +14,7 @@
     b9e24098|	plan9	MOVDLT R8, R9
     b9e270ba|	plan9	MOVDNE R10, R11
     b9f23012|	plan9	LOCR $3, R2, R1
+    b3130020|	plan9	LCDBR F0, F2
     b9e27065|	plan9	MOVDNE R5, R6
 e310f0000004|	plan9	MOVD (R15), R1
 e320f0000014|	plan9	MOVW (R15), R2

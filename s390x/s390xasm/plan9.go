@@ -352,6 +352,15 @@ func GoSyntax(inst Inst, pc uint64, symname func(uint64) (string, uint64)) strin
 	case MADBR:
 		op = "FMADD"
 		args[0], args[1], args[2] = args[1], args[2], args[0]
+	case VFM:
+		op = "WFMDB"
+		args[0], args[1], args[2] = args[1], args[2], args[0]
+		if args[3] != "" {
+			args[3] = ""
+		}
+		if args[4] != "" {
+			args[4] = ""
+		}
 	case MSGFR, MHI, MSFI, MSGFI:
 		switch inst.Op {
 		case MSGFR, MHI, MSFI:
