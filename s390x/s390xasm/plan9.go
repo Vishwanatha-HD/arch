@@ -361,6 +361,14 @@ func GoSyntax(inst Inst, pc uint64, symname func(uint64) (string, uint64)) strin
 		if args[4] != "" {
 			args[4] = ""
 		}
+        case VFS:       
+                op = "WFSDB"
+                if args[3] != "" {
+                        args[3] = ""
+                }       
+                if args[4] != "" { 
+                        args[4] = ""    
+                }
 	case MSGFR, MHI, MSFI, MSGFI:
 		switch inst.Op {
 		case MSGFR, MHI, MSFI:
