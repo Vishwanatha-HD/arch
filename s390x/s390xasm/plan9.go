@@ -355,21 +355,13 @@ func GoSyntax(inst Inst, pc uint64, symname func(uint64) (string, uint64)) strin
 	case VFM:
 		op = "WFMDB"
 		args[0], args[1], args[2] = args[1], args[2], args[0]
-		/*if args[3] != nil {
-			args[3] = ""
-		}
-		if args[4] != "" {
-			args[4] = ""
-		}*/
 		args = args[0:3]
         case VFS:       
                 op = "WFSDB"
-                if args[3] != "" {
-                        args[3] = ""
-                }       
-                if args[4] != "" { 
-                        args[4] = ""    
-                }
+		args[0], args[1], args[2] = args[2], args[1], args[0]
+		args = args[0:3]
+	case JMP:
+		op = "BR"
 	case MSGFR, MHI, MSFI, MSGFI:
 		switch inst.Op {
 		case MSGFR, MHI, MSFI:
@@ -1057,6 +1049,9 @@ func GoSyntax(inst Inst, pc uint64, symname func(uint64) (string, uint64)) strin
 // branch on relative mnemonic.
 func branch_relative_op(mask int, opconst Op) (op string, check bool) {
 	switch mask & 0xf {
+	case 1:
+		op = "BVS"
+		check = true
 	case 2:
 		op = "BGT"
 		check = true
