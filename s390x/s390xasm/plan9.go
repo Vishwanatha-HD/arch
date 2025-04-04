@@ -1075,7 +1075,7 @@ func branch_relative_op(mask int, opconst Op) (op string, check bool) {
 		op = "BLEU"
 		check = true
 	case 15:
-		op = "JMP" // BR
+		op = "BR"
 		check = true
 	}
 	return op, check
