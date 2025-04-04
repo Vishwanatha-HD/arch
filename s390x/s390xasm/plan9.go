@@ -360,8 +360,6 @@ func GoSyntax(inst Inst, pc uint64, symname func(uint64) (string, uint64)) strin
                 op = "WFSDB"
 		args[0], args[1], args[2] = args[2], args[1], args[0]
 		args = args[0:3]
-	case JMP:
-		op = "BR"
 	case MSGFR, MHI, MSFI, MSGFI:
 		switch inst.Op {
 		case MSGFR, MHI, MSFI:
