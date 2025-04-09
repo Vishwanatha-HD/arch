@@ -520,6 +520,7 @@ func GoSyntax(inst Inst, pc uint64, symname func(uint64) (string, uint64)) strin
 		}
 		if op == "RET" {
 			args = args[:0]
+			return op
 		}
 	case LOCGR:
 		mask, err := strconv.Atoi(args[2][1:])
