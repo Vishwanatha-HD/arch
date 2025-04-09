@@ -1,4 +1,4 @@
-module golang.org/x/arch
+module github.com/Vishwanatha-HD/arch
 
 go 1.23.0
 
