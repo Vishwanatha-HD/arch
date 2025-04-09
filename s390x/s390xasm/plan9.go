@@ -518,6 +518,10 @@ func GoSyntax(inst Inst, pc uint64, symname func(uint64) (string, uint64)) strin
 		if op == "SYNC" || op == "NOPH" {
 			return op
 		}
+		if op == "JMP" {
+			op = "RET"
+			args = args[:]
+		}
 		if check {
 			args[0] = args[1]
 			args = args[:1]
