@@ -518,13 +518,8 @@ func GoSyntax(inst Inst, pc uint64, symname func(uint64) (string, uint64)) strin
 		if op == "SYNC" || op == "NOPH" {
 			return op
 		}
-		if op == "JMP" {
-			op = "RET"
+		if op == "RET" {
 			args = args[:0]
-		}
-		if check {
-			args[0] = args[1]
-			args = args[:1]
 		}
 	case LOCGR:
 		mask, err := strconv.Atoi(args[2][1:])
@@ -1087,17 +1082,16 @@ func branch_relative_op(mask int, opconst Op) (op string, check bool) {
 
 // This function returns corresponding extended mnemonic for the given
 // brach on condition mnemonic.
-func branchOnConditionOp(mask int, opconst Op) (op string, check bool) {
+func branchOnConditionOp(mask int, opconst Op) (op string) {
 	switch mask & 0xf {
 	case 0:
 		op = "NOPH"
 	case 14:
 		op = "SYNC"
 	case 15:
-		op = "JMP"
-		check = true
+		op = "RET"
 	}
-	return op, check
+	return op
 }
 
 // This function returns corresponding plan9 mnemonic for the native bitwise mnemonic.
